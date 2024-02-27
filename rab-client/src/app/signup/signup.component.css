@@ -1,0 +1,17 @@
+.form {
+  width: 50%; 
+  margin: 0 auto; 
+}
+
+.form-right-align {
+  text-align: right;
+}
+
+input.form-right-align::-webkit-outer-spin-button,
+input.form-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.form-right-align {
+  -moz-appearance: textfield;
+}

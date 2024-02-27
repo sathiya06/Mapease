@@ -1,0 +1,35 @@
+
+<mat-toolbar color="primary">
+    <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button        
+        (click)="drawer.toggle()"
+        *ngIf="isSidenavOpen">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <span>Rab App</span>
+    <span class="nav-spacer"></span>
+    <button>
+        <mat-icon color="primary" (click)="logout()">logout</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav"       
+    [attr.role]="'navigation'"
+    [mode]="'over'"
+    [opened]="(isSidenavOpen) === false">
+        <mat-toolbar>Menu</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item (click)="setPage(1)">Farm</a>
+            <a mat-list-item (click)="setPage(2)">Movement</a>
+            <a mat-list-item (click)="setPage(3)">Graph</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content [ngSwitch]="page">
+        <rab-farm *ngSwitchCase="1"></rab-farm>
+        <rab-movement *ngSwitchCase="2"></rab-movement>
+        <rab-graph *ngSwitchCase="3"></rab-graph>
+    </mat-sidenav-content>
+</mat-sidenav-container>
