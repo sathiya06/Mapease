@@ -19,12 +19,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
-import { FarmComponent } from './farm/farm.component';
-import { MovementComponent } from './movement/movement.component';
-import { GraphComponent } from './graph/graph.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HomeComponent } from './components/home/home.component';
+import { FarmComponent } from './components/farm/farm.component';
+import { MovementComponent } from './components/movement/movement.component';
+import { GraphComponent } from './components/graph/graph.component';
 
 @NgModule({
   declarations: [

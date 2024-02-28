@@ -22,9 +22,9 @@
     [opened]="(isSidenavOpen) === false">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item (click)="setPage(1)">Farm</a>
-            <a mat-list-item (click)="setPage(2)">Movement</a>
-            <a mat-list-item (click)="setPage(3)">Graph</a>
+            <a mat-list-item (click)="setPage(1);drawer.toggle()">Farm</a>
+            <a mat-list-item (click)="setPage(2);drawer.toggle()">Movement</a>
+            <a mat-list-item (click)="setPage(3);drawer.toggle()">Graph</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content [ngSwitch]="page">
