@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rab-client:build:production"
+              "buildTarget": "rab-client:build:production"
             },
             "development": {
-              "browserTarget": "rab-client:build:development"
+              "buildTarget": "rab-client:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rab-client:build"
+            "buildTarget": "rab-client:build"
           }
         },
         "test": {
