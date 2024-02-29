@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
 import {FormBuilder, Validators} from '@angular/forms';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'rab-signup',
@@ -11,8 +10,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class SignupComponent {
   hide = true;
   fb = inject(FormBuilder);
-  http = inject(HttpClient);
-  router = inject(Router);
+  authService = inject(AuthService);
 
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
@@ -21,10 +19,8 @@ export class SignupComponent {
   });
 
   onSubmit(): void {
-    console.log(this.form.getRawValue());
-    this.http.post('http://localhost:8080/auth/signup', this.form.getRawValue()).subscribe((response : any) => {
-      localStorage.setItem('token', response.token);
-      this.router.navigateByUrl('/home');
-    });
+    
+    this.authService.signup(this.form.getRawValue());
+
   }
 }
