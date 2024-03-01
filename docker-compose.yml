@@ -1,0 +1,46 @@
+version: "3"
+services:
+
+  postgres:
+    image: 'postgres:14.0'
+    ports:
+      - "5432:5432"
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: rab
+    volumes:
+      - ./db-data/postgres/:/var/lib/postgresql/data/
+
+  rab-spring:
+    build: ./rab
+    container_name: rab-spring
+    environment:
+      - DB_SERVER=postgres
+      - POSTGRES_DB=jdbc:postgresql://postgres/rab
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - 8080:8080
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  rab-client:
+    build: ./rab-client
+    container_name: rab-client
+    ports:
+      - 4200:4200
+    restart: always
+    deploy:
+      mode: replicated
+      replicas: 1

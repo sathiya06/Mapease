@@ -27,8 +27,6 @@ export class MovementComponent {
 
   ngOnInit(): void {
     this.homeService.getMovementData().subscribe(data => {
-      console.log(data);
-      console.log(this.dataSource);
       this.dataSource = data;
     });
   }

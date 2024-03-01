@@ -22,12 +22,13 @@ export class FarmComponent {
 
   }
 
-  displayedColumns: string[] = ['id', 'name', 'address', 'city', 'state', 'postalCode'];
+  displayedColumns: string[] = ['id', 'name', 'address', 'city', 'state', 'postalCode', 'total_animals'];
   dataSource :Farm[] = [];
 
   ngOnInit(): void {
     this.homeService.getFarmData().subscribe(data => {
       this.dataSource = data;
+      console.log(data);
     });
   }
 }
