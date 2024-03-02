@@ -20,13 +20,12 @@ public class MovementController {
 	MovementService movementService;
     @PostMapping("/movement")
     public ResponseEntity<?> addMovement(@RequestBody Movement movement) {
-
         try {
-            boolean isSuccessful = movementService.addMovement(movement);
+            boolean isSuccessful = movementService.addMovementWithCheck(movement);
             if (isSuccessful) {
                 return ResponseEntity.ok("Movement Added Successfully!");
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid farm details");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid movement details");
             }
         } catch (Exception e) {
             // Handle any authentication exceptions

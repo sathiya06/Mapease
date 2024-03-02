@@ -88,6 +88,13 @@ public class Farm {
 	public void setTotalAnimals(Integer totalAnimals) {
 		this.totalAnimals = totalAnimals;
 	}
+
+	@Override
+	public String toString() {
+		return "Farm [id=" + id + ", name=" + name + ", address=" + address + ", city=" + city + ", state=" + state
+				+ ", postalCode=" + postalCode + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", totalAnimals=" + totalAnimals + "]";
+	}
     
 
 }

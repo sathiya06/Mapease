@@ -20,6 +20,11 @@ public class FarmService {
         return true;
     }
     
+    public boolean deleteFarm (String farmId){
+        farmRepo.deleteById(farmId);;
+        return true;
+    }
+    
     public List<Farm> getAllFarm(){
         return farmRepo.findAll();
     }
