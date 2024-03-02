@@ -1,0 +1,61 @@
+<div class="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-card class="addFarm-card" >
+    <mat-card-header class="center">
+        <mat-card-title>Add New Farm</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="center">
+        <mat-form-field >
+            <mat-label>Enter Farm Id</mat-label>
+            <input matInput placeholder="ID" required formControlName="id">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm Name</mat-label>
+            <input matInput placeholder="Example Farm" required formControlName="name">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm Address</mat-label>
+            <input matInput placeholder="Example" required formControlName="address">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm City</mat-label>
+            <input matInput placeholder="Example" required formControlName="city">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm State</mat-label>
+            <input matInput placeholder="Example" required formControlName="state">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm Postal Code</mat-label>
+            <input matInput type="number" maxlength="5" placeholder="Ex. 94105" value="94043" required formControlName="postalCode">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm Latitude</mat-label>
+            <input matInput type="number" placeholder="Example" required formControlName="latitude">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Enter Farm Longitude</mat-label>
+            <input matInput type="number" placeholder="Example" required formControlName="longitude">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label class="center">Total Animals</mat-label>
+            <input matInput type="number" placeholder="Example" required formControlName="totalAnimals">
+        </mat-form-field>
+        <br/>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="form" type="submit" mat-raised-button color="primary">Add</button>
+        <router-outlet></router-outlet>
+    </mat-card-actions>
+    </mat-card>
+</form>
+</div>
+

@@ -1,6 +1,10 @@
 .form {
   width: 50%; 
+  margin: 10% auto; 
+}
+.center {
   margin: 0 auto; 
+  padding: 1%;
 }
 
 .form-right-align {

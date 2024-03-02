@@ -1,14 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Farm } from 'src/app/model/Farm';
 import { HomeService } from 'src/app/service/home.service';
-
-export interface Farm {
-  id: string;
-  name: string;
-  address: string;
-  city: string;
-  state: string;
-  postalCode: string;
-}
 
 
 @Component({
@@ -16,19 +12,35 @@ export interface Farm {
   templateUrl: './farm.component.html',
   styleUrls: ['./farm.component.css']
 })
+
 export class FarmComponent {
 
-  constructor(private homeService: HomeService) {
-
-  }
+  fb = inject(FormBuilder);
+  homeService = inject(HomeService);
 
   displayedColumns: string[] = ['id', 'name', 'address', 'city', 'state', 'postalCode', 'total_animals'];
-  dataSource :Farm[] = [];
+  dataSource :any;
+
+  @ViewChild (MatPaginator) paginator !: MatPaginator;
+  @ViewChild (MatSort) sort !: MatSort;
+
+  deleteFarm(farmId: any){
+    console.log("component");
+    this.homeService.deleteFarmById(this.fb.nonNullable.group({
+      id: [farmId]}).getRawValue());
+    this.ngOnInit();
+  }
+
+  filterChange(event : Event){
+    const val = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = val;
+  }
 
   ngOnInit(): void {
     this.homeService.getFarmData().subscribe(data => {
-      this.dataSource = data;
-      console.log(data);
+      this.dataSource = new MatTableDataSource<Farm>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 }

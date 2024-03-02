@@ -1,11 +1,12 @@
 .form {
   width: 50%; 
-  margin: 10% auto; 
+  margin: 0 auto; 
 }
+
 .center {
   margin: 0 auto; 
-  padding: 1%;
 }
+
 .form-right-align {
   text-align: right;
 }

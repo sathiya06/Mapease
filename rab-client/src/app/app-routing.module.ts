@@ -7,7 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { gaurdGuard } from './Guard/gaurd.guard';
 
 const routes: Routes = [
-  { path: '', title: 'home', component: LoginComponent, canActivate: [gaurdGuard] },
+  { path: '', title: 'home', component: HomeComponent, canActivate: [gaurdGuard] },
   { path: 'login', title: 'login', component: LoginComponent, canActivate: [gaurdGuard] },
   { path: 'signup', title: 'signup', component: SignupComponent, canActivate: [gaurdGuard] },
   { path: 'home', title: 'home', component: HomeComponent, canActivate: [gaurdGuard] },

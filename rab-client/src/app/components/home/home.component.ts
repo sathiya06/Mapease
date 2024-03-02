@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   router = inject(Router);
   isSidenavOpen = true;
+  isAdmin = localStorage.getItem("rab-role") == "0";
   page = 1;
   setPage(n:any){
     this.page = n;
   }
   logout(){
-    localStorage.removeItem("token");
+    localStorage.removeItem("rab-token");
+    localStorage.removeItem("rab-role");
     this.router.navigateByUrl("/login");
   }
 }

@@ -18,6 +18,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
 
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -25,6 +27,8 @@ import { HomeComponent } from './components/home/home.component';
 import { FarmComponent } from './components/farm/farm.component';
 import { MovementComponent } from './components/movement/movement.component';
 import { GraphComponent } from './components/graph/graph.component';
+import { FarmFormComponent } from './components/farm-form/farm-form.component';
+import { MovementFormComponent } from './components/movement-form/movement-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { GraphComponent } from './components/graph/graph.component';
     HomeComponent,
     FarmComponent,
     MovementComponent,
-    GraphComponent
+    GraphComponent,
+    FarmFormComponent,
+    MovementFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,7 @@ import { GraphComponent } from './components/graph/graph.component';
     MatFormFieldModule,
     AppRoutingModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule, MatPaginatorModule, MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

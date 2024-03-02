@@ -7,7 +7,6 @@ export const gaurdGuard: CanActivateFn = (route, state) => {
   const currentTab = (route.url[0]) ? route.url[0].path : '';
   const router = inject(Router);
   const isLoggedIn = inject(AuthService).authenticate();
-
   if (currentTab == '' || currentTab == 'home'){
     if (isLoggedIn){
       return true;

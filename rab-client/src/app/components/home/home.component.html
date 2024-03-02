@@ -23,13 +23,17 @@
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
             <a mat-list-item (click)="setPage(1);drawer.toggle()">Farm</a>
+            <a mat-list-item *ngIf="isAdmin" (click)="setPage(4);drawer.toggle()">Add Farm</a>
             <a mat-list-item (click)="setPage(2);drawer.toggle()">Movement</a>
-            <a mat-list-item (click)="setPage(3);drawer.toggle()">Graph</a>
+            <a mat-list-item *ngIf="isAdmin" (click)="setPage(5);drawer.toggle()">Add Movement</a>
+            <a mat-list-item (click)="setPage(3);drawer.toggle()">Map View</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content [ngSwitch]="page">
         <rab-farm *ngSwitchCase="1"></rab-farm>
         <rab-movement *ngSwitchCase="2"></rab-movement>
         <rab-graph *ngSwitchCase="3"></rab-graph>
+        <rab-farm-form *ngSwitchCase="4"></rab-farm-form>
+        <rab-movement-form *ngSwitchCase="5"></rab-movement-form>
     </mat-sidenav-content>
 </mat-sidenav-container>
