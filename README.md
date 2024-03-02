@@ -1,5 +1,12 @@
 # Programming challenge
 
+## Steps to run the application
+
+Clone the repository 
+
+Run Docker compose up
+
+
 ## Background
 In food animal systems, animals move to different farms as they age. Each farm has a unique ID and must keep a record of the movement of animals from one farm to another. Here, we present some fictitious records of movements among pig farms.
 
