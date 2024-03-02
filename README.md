@@ -7,7 +7,7 @@ Clone the repository
 Run Docker compose up
 
 ## Description
-
+This app is created using Angular, Spring Boot and PostgreSQL
 ## Login credentials
 ## Admin
 email: demo@gmail.com
