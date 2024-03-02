@@ -32,7 +32,7 @@ public class UserController {
             boolean isRegistered = userService.addUser(user);
 
             if (isRegistered) {
-                return ResponseEntity.ok(new ResponseObject(user.getEmail()));
+                return ResponseEntity.ok(new ResponseObject(user.getEmail(), userService.getUserRoleByEmail(user.getEmail())));
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
             }
@@ -44,20 +44,21 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseObject> login(@RequestBody User user) {
+    public ResponseEntity<?> login(@RequestBody User user) {
 
         try {
             // Authenticate the user using your service
             boolean isAuthenticated = userService.authenticateUser(user.getEmail(), user.getPassword());
 
             if (isAuthenticated) {
-                return ResponseEntity.ok(new ResponseObject(user.getEmail()));
+            	System.out.print(user.getRoles());
+                return ResponseEntity.ok(new ResponseObject(user.getEmail(), userService.getUserRoleByEmail(user.getEmail())));
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseObject("Invalid username or password"));
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
             }
         } catch (Exception e) {
             // Handle any authentication exceptions
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseObject("Authentication failed"));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Authentication failed");
         }
     }
 	

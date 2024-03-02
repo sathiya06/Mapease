@@ -1,5 +1,7 @@
 package com.app.rab.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +22,19 @@ public class MovementController {
 	MovementService movementService;
     @PostMapping("/movement")
     public ResponseEntity<?> addMovement(@RequestBody Movement movement) {
-
+    	
+    	HashMap<String, String> response = new HashMap<>();
+    	
         try {
-            boolean isSuccessful = movementService.addMovement(movement);
+            boolean isSuccessful = movementService.addMovementWithCheck(movement);
             if (isSuccessful) {
-                return ResponseEntity.ok("Movement Added Successfully!");
+                return ResponseEntity.ok(response.put("success", "Movement Added Successfully!"));
             } else {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid farm details");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response.put("error", "Invalid movement details"));
             }
         } catch (Exception e) {
             // Handle any authentication exceptions
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to save");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response.put("error", "Failed to save"));
         }
         
     }

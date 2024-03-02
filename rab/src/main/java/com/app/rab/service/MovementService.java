@@ -16,7 +16,7 @@ public class MovementService {
     @Autowired
     FarmService farmService;
 	
-    public boolean addMovement (Movement move){
+    public boolean addMovementWithCheck (Movement move){
     	int originFarmCapacity = farmService.getFarmAnimalsCount(move.getOriginFarmId());
     	if (originFarmCapacity >= move.getItemsMoved()) {
     		farmService.updateFarmAnimalsCount(move.getOriginFarmId(), -move.getItemsMoved());
@@ -25,6 +25,11 @@ public class MovementService {
             return true;
     	}
     	return false;
+    }
+    
+    public boolean addMovement (Movement move){
+    	movementRepo.save(move);
+        return true;
     }
     
     public List<Movement> getAllMovement(){

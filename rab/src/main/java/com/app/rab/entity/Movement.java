@@ -94,5 +94,12 @@ public class Movement {
 	public void setMovementDate(String movementDate) {
 		this.movementDate = movementDate;
 	}
+
+	@Override
+	public String toString() {
+		return "Movement [movementId=" + movementId + ", company=" + company + ", reason=" + reason + ", originFarmId="
+				+ originFarmId + ", destinationFarmId=" + destinationFarmId + ", species=" + species + ", itemsMoved="
+				+ itemsMoved + ", movementDate=" + movementDate + "]";
+	}
 	
 }

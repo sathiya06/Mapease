@@ -37,6 +37,11 @@ public class UserService {
         return user;
     }
     
+    public Integer getUserRoleByEmail(String email) {
+        User user = userRepo.findByEmail(email).orElse(null);
+        return user.getRoles();
+    }
+    
     public List<User> getAllUser(){
         return userRepo.findAll();
     }
